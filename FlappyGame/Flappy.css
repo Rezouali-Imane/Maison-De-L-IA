@@ -1,0 +1,60 @@
+/* ===============================================================
+ * Flappy Mia Game - Core CSS Styling
+ * =============================================================== */
+
+/* Basic resets for the entire page */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Mia Character Styling */
+#mia-character {
+    width: 273px;
+    height: 274px;
+    background-image: url("./images/FlyingMia.png");
+    background-size: cover;
+    position: absolute; /* Allows positioning with top/left */
+    left: 50px;
+    top: 200px;
+    z-index: 3; /* Ensures Mia is on top of other elements */
+}
+
+/* Main game area container */
+#game-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #003566; /* Sky color */
+    z-index: 1; /* Lowest layer */
+    overflow: hidden; /* CRITICAL: Hides content that moves outside the container (e.g., pipes, Mia) */
+}
+
+/* Ground element styling */
+#game-ground {
+    width: 100%;
+    height: 194px;
+    position: absolute; /* Allows positioning at the bottom */
+    bottom: 0; /* Anchored to the bottom */
+    background-image: url("./images/ground1.png");
+    background-repeat: repeat-x; /* Repeats horizontally for scrolling effect */
+    background-position-x: 0; /* Initial horizontal background position (controlled by JS) */
+    z-index: 2; /* Above container, below Mia and pipes */
+}
+
+/* Base styles for all pipe elements */
+.pipe {
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute; /* Allows dynamic positioning via JS */
+    /* Height, top, and left are set dynamically by JavaScript for each pipe instance */
+}
+
+/* Specific background images for top and bottom pipes */
+.top-pipe {
+    background-image: url("./images/pipeDown.png");
+}
+
+.bottom-pipe {
+    background-image: url("./images/pipeUp.png");
+}
