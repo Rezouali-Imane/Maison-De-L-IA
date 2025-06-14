@@ -43,18 +43,7 @@ body {
 
 /* Base styles for all pipe elements */
 .pipe {
-    width: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    width: 60px;
     position: absolute; /* Allows dynamic positioning via JS */
     /* Height, top, and left are set dynamically by JavaScript for each pipe instance */
-}
-
-/* Specific background images for top and bottom pipes */
-.top-pipe {
-    background-image: url("./images/pipeDown.png");
-}
-
-.bottom-pipe {
-    background-image: url("./images/pipeUp.png");
 }

@@ -74,7 +74,8 @@ function createPipe() {
 
     // Top Pipe
     let topPipeHeight = getRandomInt(5, 75); // Random height in vh
-    let topPipe = document.createElement("div");
+    let topPipe = document.createElement("img");
+    topPipe.src = "./images/pipeDown.png";
     topPipe.className = "pipe top-pipe";
     gameContainer.appendChild(topPipe);
     topPipe.style.height = topPipeHeight + 'vh';
@@ -84,7 +85,8 @@ function createPipe() {
     // Bottom Pipe
     // Height calculated based on total height (100vh), top pipe, and fixed gap
     let bottomPipeHeight = 100 - topPipeHeight - PIPE_VERTICAL_GAP_VH;
-    let bottomPipe = document.createElement("div");
+    let bottomPipe = document.createElement("img");
+    bottomPipe.src = "./images/pipeUP.png";
     bottomPipe.className = "pipe bottom-pipe";
     gameContainer.appendChild(bottomPipe);
     bottomPipe.style.height = bottomPipeHeight + "vh";
