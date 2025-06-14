@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#mia-character{
+    width: 273px;
+    height: 274px;
+    background-image: url("./images/FlyingMia.png");
+    background-size: cover;
+    position: absolute;
+    left: 50px; top: 200px;
+    z-index: 3;
+}
+
+#game-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #003566;
+    z-index: 1;
+}
+
+#game-ground{
+    width: 100%;
+    height: 194px;
+    position: absolute;
+    bottom: 0;
+    background-image: url("./images/ground1.png");
+    background-repeat: repeat-x;
+    background-position-x: 0;
+    z-index: 2;
+}
+
+.top-pipe{
+    background-image: url("./images/pipeDown.png");
+}
+
+.bottom-pipe {
+    background-image: url("./images/pipeUp.png");
+}
+
+.pipe{
+    width: 50px;
+    background-size: cover;
+    position: absolute;
+}
