@@ -1,119 +1,197 @@
-// ===============================================================
-// Flappy Mia Game - Core JavaScript Logic
-// ===============================================================
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
-// --- DOM Element References ---
-const miaCharacter = document.getElementById("mia-character");
-const gameContainer = document.getElementById("game-container");
-const gameGround = document.getElementById("game-ground");
+canvas.width = 800;
+canvas.height = 600;
 
-// --- Game State Variables ---
-let miaY = 200; // Mia's current vertical position
-let miaVelocity = 0; // Mia's current vertical speed and direction
-let backgroundPositionX = 0; // For horizontal scrolling of background/ground
-const activePipes = []; // Stores all currently visible pipe obstacles
+// Load assets
+const miaImg = new Image();
+miaImg.src = "images/FlyingMia.png"; 
 
-// --- Game Constants (Tunable) ---
-const FLAP_STRENGTH = 20; // Upward force when Mia flaps
-const GRAVITY = 1; // Downward acceleration rate
-const PIPE_SPEED = 2; // Horizontal speed of pipes (pixels per frame)
-const PIPE_VERTICAL_GAP_VH = 10; // Vertical gap size between top and bottom pipes (in vh)
-const PIPE_WIDTH_PX = 50; // Width of the pipe sprites (in pixels)
+const pipeTopImg = new Image();
+pipeTopImg.src = "images/pipeDown.png";
 
-// ===============================================================
-// Core Game Loop
-// Updates game state and visuals in each animation frame.
-// ===============================================================
-function gameLoop() {
-    // Mia's vertical movement based on gravity
-    miaVelocity += GRAVITY;
-    miaY += miaVelocity;
-    miaCharacter.style.top = miaY + `px`;
+const pipeBottomImg = new Image();
+pipeBottomImg.src = "images/pipeUp.png";
 
-    // Background/Ground Scrolling
-    backgroundPositionX -= 5; // Scroll speed for ground/background
-    gameGround.style.backgroundPositionX = backgroundPositionX + `px`;
+// mia
+const mia = {
+  x: 248,
+  y: 477,
+  width: 52,
+  height: 52,
+  gravity: 0.5,
+  lift: -7,
+  velocity: 0
+};
 
-    // Pipe Movement and Removal Logic
-    const pipesToKeep = []; // Temporarily holds pipes that are still on screen
-    for (let i = 0; i < activePipes.length; i++) {
-        const pipe = activePipes[i];
+let pipes = [];
+let frame = 0;
+let score = 0;
+let pipeSpeed = 2;
 
-        // Move pipe horizontally to the left
-        pipe.xPosition -= PIPE_SPEED;
-        pipe.topElement.style.left = pipe.xPosition + `px`;
-        pipe.bottomElement.style.left = pipe.xPosition + `px`;
+// Controls
+document.addEventListener("keydown", () => {
+  mia.velocity = mia.lift;
+});
 
-        // Remove pipe if it's completely off-screen
-        if (pipe.xPosition + PIPE_WIDTH_PX <= 0) {
-            pipe.topElement.remove(); // Remove HTML element from DOM
-            pipe.bottomElement.remove(); // Remove HTML element from DOM
-        } else {
-            pipesToKeep.push(pipe); // Keep pipe if still visible
-        }
+// Background
+function drawBackground() {
+  ctx.fillStyle = "#87CEEB"; 
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Drawing mia 
+function drawMIA() {
+  ctx.save();
+  ctx.translate(mia.x + mia.width / 2, mia.y + mia.height / 2);
+  const angle = Math.min(Math.PI / 4, mia.velocity * 0.1);
+  ctx.rotate(angle);
+
+  if (miaImg.complete && miaImg.naturalWidth > 0) {
+    ctx.drawImage(miaImg, -mia.width / 2, -mia.height / 2, mia.width, mia.height);
+  } else {
+    ctx.fillStyle = "red";
+    ctx.fillRect(-mia.width / 2, -mia.height / 2, mia.width, mia.height);
+  }
+
+  ctx.restore();
+}
+
+function updateMIA() {
+  mia.velocity += mia.gravity;
+  mia.y += mia.velocity;
+
+  if (mia.y + mia.height > canvas.height) {
+    mia.y = canvas.height - mia.height;
+    mia.velocity = 0;
+  }
+
+  if (mia.y < 0) {
+    mia.y = 0;
+    mia.velocity = 0;
+  }
+}
+
+// pipes creation
+function generatePipes() {
+  if (frame % 100 === 0) {
+    const gap = 140;
+    const topHeight = Math.floor(Math.random() * 250) + 50;
+
+    pipes.push({
+      x: canvas.width,
+      topY: topHeight - 200,
+      bottomY: topHeight + gap,
+      passed: false
+    });
+  }
+}
+
+// pipes drawing ( diementions are to be fixed)
+function drawPipes() {
+  pipes.forEach(pipe => {
+    ctx.drawImage(pipeTopImg, pipe.x, pipe.topY, 70, 200);
+    ctx.drawImage(pipeBottomImg, pipe.x, pipe.bottomY, 70, 200);
+  });
+}
+
+//  pipes and scoring update 
+function updatePipes() {
+  pipes.forEach(pipe => {
+    pipe.x -= pipeSpeed;
+
+    if (!pipe.passed && pipe.x + 70 < mia.x) {
+      score++;
+      pipe.passed = true;
+
+    // Speed up after 25 points
+      if (score === 25) {
+        pipeSpeed = 3.5;
+        mia.gravity = 0.6;
+        console.log("⚡ Speed increased!");
+      }
     }
-    // Update activePipes array to remove off-screen pipes
-    activePipes.splice(0, activePipes.length, ...pipesToKeep);
+  });
 
-    requestAnimationFrame(gameLoop); // Request next animation frame
+  pipes = pipes.filter(pipe => pipe.x + 70 > 0);
 }
+// collision detection
+function checkCollision() {
+    const pipeWidth = 70;
+    const pipeHeight = 200;
 
-// ===============================================================
-// Utility Functions
-// ===============================================================
+    const hitbox = {
+        x: mia.x + 12,
+        y: mia.y + 12,
+        width: mia.width - 24,
+        height: mia.height - 24
+    };
 
-// Mia's flap/jump action
-function flop() {
-    miaVelocity = -FLAP_STRENGTH; // Sets upward velocity
-}
+    pipes.forEach(pipe => {
+        
+        const topPipe = {
+            x: pipe.x + 6,
+            y: pipe.topY + 6,
+            width: pipeWidth - 12,
+            height: pipeHeight - 12
+        };
+    
+        const bottomPipe = {
+            x: pipe.x + 6,
+            y: pipe.bottomY + 6,
+            width: pipeWidth - 12,
+            height: pipeHeight - 12
+        };
 
-// Creates a new pair of top and bottom pipe obstacles
-function createPipe() {
-    // Initial horizontal position for new pipes, off-screen to the right
-    const pipePositionX = gameContainer.clientWidth + 50;
+       
+        const collideTop =
+            hitbox.x < topPipe.x + topPipe.width &&
+            hitbox.x + hitbox.width > topPipe.x &&
+            hitbox.y < topPipe.y + topPipe.height &&
+            hitbox.y + hitbox.height > topPipe.y;
 
-    // Top Pipe
-    let topPipeHeight = getRandomInt(5, 75); // Random height in vh
-    let topPipe = document.createElement("img");
-    topPipe.src = "./images/pipeDown.png";
-    topPipe.className = "pipe top-pipe";
-    gameContainer.appendChild(topPipe);
-    topPipe.style.height = topPipeHeight + 'vh';
-    topPipe.style.top = "0vh"; // Anchored to top
-    topPipe.style.left = pipePositionX + "px";
+        
+        const collideBottom =
+            hitbox.x < bottomPipe.x + bottomPipe.width &&
+            hitbox.x + hitbox.width > bottomPipe.x &&
+            hitbox.y < bottomPipe.y + bottomPipe.height &&
+            hitbox.y + hitbox.height > bottomPipe.y;
 
-    // Bottom Pipe
-    // Height calculated based on total height (100vh), top pipe, and fixed gap
-    let bottomPipeHeight = 100 - topPipeHeight - PIPE_VERTICAL_GAP_VH;
-    let bottomPipe = document.createElement("img");
-    bottomPipe.src = "./images/pipeUP.png";
-    bottomPipe.className = "pipe bottom-pipe";
-    gameContainer.appendChild(bottomPipe);
-    bottomPipe.style.height = bottomPipeHeight + "vh";
-    bottomPipe.style.top = (topPipeHeight + PIPE_VERTICAL_GAP_VH) + "vh"; // Positioned after top pipe + gap
-    bottomPipe.style.left = pipePositionX + "px";
-
-    // Store references and position for movement
-    activePipes.push({
-        topElement: topPipe,
-        bottomElement: bottomPipe,
-        xPosition: pipePositionX
+        if (collideTop || collideBottom) {
+            alert("💥 Game Over!\nYour Score: " + score);
+            document.location.reload();
+        }
     });
 }
 
-// Generates a random integer within a specified range
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+// Display score and speed-up message 
+   //to be replaced later with other pages display
+function drawScore() {
+  ctx.fillStyle = "#fff";
+  ctx.font = "30px Arial";
+  ctx.fillText("SCORE: " + score, 20, 50);
+
+  if (score >= 25) {
+    ctx.font = "20px Arial";
+    ctx.fillText("⚡ Speed Up!", 20, 80);
+  }
 }
 
-// ===============================================================
-// Game Initialization
-// ===============================================================
+// Main 
+function animate() {
+  drawBackground();
+  drawPipes();
+  drawMIA();
+  drawScore();
 
-// Start continuous pipe generation
-const pipeGenerationIntervalID = setInterval(createPipe, 2000);
+  updateMIA();
+  generatePipes();
+  updatePipes();
+  checkCollision();
 
-// Initiate the main game loop
-gameLoop();
+  frame++;
+  requestAnimationFrame(animate);
+}
+
+animate();
