@@ -6,7 +6,7 @@ canvas.height = 600;
 
 // Load assets
 const miaImg = new Image();
-miaImg.src = "images/FlyingMia.png"; 
+miaImg.src = "images/FlyingMia.png";
 
 const pipeTopImg = new Image();
 pipeTopImg.src = "images/pipeDown.png";
@@ -14,108 +14,177 @@ pipeTopImg.src = "images/pipeDown.png";
 const pipeBottomImg = new Image();
 pipeBottomImg.src = "images/pipeUp.png";
 
+const groundImg = new Image();
+groundImg.src = "./images/ground1.png";
+
+let gameRunning = true; // NEW: Flag to control game state
+
+groundImg.onload = function () {
+    ground.width = (groundImg.naturalWidth / groundImg.naturalHeight) * ground.height;
+    ground.y = canvas.height - ground.height;
+    ground.x = 0;
+    ground.speed = pipeSpeed;
+}
 // mia
 const mia = {
-  x: 248,
-  y: 477,
-  width: 52,
-  height: 52,
-  gravity: 0.5,
-  lift: -7,
-  velocity: 0
+    x: 248,
+    y: 274,
+    width: 52,
+    height: 52,
+    gravity: 1000,
+    lift: -300,
+    velocity: 0
 };
 
 let pipes = [];
 let frame = 0;
 let score = 0;
-let pipeSpeed = 2;
+let pipeSpeed = 150;
+
+let ground = {
+    height: 80,
+    speed: pipeSpeed
+}
+
+// Global variable for pipe generation timer
+let pipeGenerationTimer = 0;
+const PIPE_GEN_INTERVAL_SECONDS = 1.66;
 
 // Controls
 document.addEventListener("keydown", () => {
-  mia.velocity = mia.lift;
+    if (gameRunning) { // Only allow flapping if game is running
+        mia.velocity = mia.lift;
+    }
 });
 
 // Background
 function drawBackground() {
-  ctx.fillStyle = "#87CEEB"; 
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#87CEEB";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Drawing mia 
+// Drawing mia
 function drawMIA() {
-  ctx.save();
-  ctx.translate(mia.x + mia.width / 2, mia.y + mia.height / 2);
-  const angle = Math.min(Math.PI / 4, mia.velocity * 0.1);
-  ctx.rotate(angle);
+    ctx.save();
+    ctx.translate(mia.x + mia.width / 2, mia.y + mia.height / 2);
 
-  if (miaImg.complete && miaImg.naturalWidth > 0) {
-    ctx.drawImage(miaImg, -mia.width / 2, -mia.height / 2, mia.width, mia.height);
-  } else {
-    ctx.fillStyle = "red";
-    ctx.fillRect(-mia.width / 2, -mia.height / 2, mia.width, mia.height);
-  }
+    // FIX: Corrected Mia's rotation logic
+    const rotationFactor = 0.001;
+    let angle = mia.velocity * rotationFactor;
+    angle = Math.max(-Math.PI / 4, Math.min(Math.PI / 2, angle));
+    ctx.rotate(angle);
 
-  ctx.restore();
+    if (miaImg.complete && miaImg.naturalWidth > 0) {
+        ctx.drawImage(miaImg, -mia.width / 2, -mia.height / 2, mia.width, mia.height);
+    } else {
+        ctx.fillStyle = "red";
+        ctx.fillRect(-mia.width / 2, -mia.height / 2, mia.width, mia.height);
+    }
+
+    ctx.restore();
 }
 
-function updateMIA() {
-  mia.velocity += mia.gravity;
-  mia.y += mia.velocity;
+function updateMIA(deltaTime) {
+    mia.velocity += mia.gravity * deltaTime;
+    mia.y += mia.velocity * deltaTime;
 
-  if (mia.y + mia.height > canvas.height) {
-    mia.y = canvas.height - mia.height;
-    mia.velocity = 0;
-  }
+    if (mia.y + mia.height - 24 > ground.y) {
+        gameRunning = false;
+        alert("💥 Game Over!\nYour Score: " + score);
+        resetGame();
+    }
 
-  if (mia.y < 0) {
-    mia.y = 0;
-    mia.velocity = 0;
-  }
+    if (mia.y < 0) {
+        mia.y = 0;
+        mia.velocity = 0;
+    }
 }
 
 // pipes creation
-function generatePipes() {
-  if (frame % 100 === 0) {
-    const gap = 140;
-    const topHeight = Math.floor(Math.random() * 250) + 50;
+function generatePipes(deltaTime) {
+    pipeGenerationTimer += deltaTime;
 
-    pipes.push({
-      x: canvas.width,
-      topY: topHeight - 200,
-      bottomY: topHeight + gap,
-      passed: false
-    });
-  }
-}
+    if (pipeGenerationTimer >= PIPE_GEN_INTERVAL_SECONDS) {
+        const gap = 140;
+        const minGapYPosition = 50;
+        const maxGapYPosition = ground.y - gap;
+        const gapYPosition = Math.floor(Math.random() * (maxGapYPosition - minGapYPosition + 1)) + minGapYPosition;
 
-// pipes drawing ( diementions are to be fixed)
-function drawPipes() {
-  pipes.forEach(pipe => {
-    ctx.drawImage(pipeTopImg, pipe.x, pipe.topY, 70, 200);
-    ctx.drawImage(pipeBottomImg, pipe.x, pipe.bottomY, 70, 200);
-  });
-}
-
-//  pipes and scoring update 
-function updatePipes() {
-  pipes.forEach(pipe => {
-    pipe.x -= pipeSpeed;
-
-    if (!pipe.passed && pipe.x + 70 < mia.x) {
-      score++;
-      pipe.passed = true;
-
-    // Speed up after 25 points
-      if (score === 25) {
-        pipeSpeed = 3.5;
-        mia.gravity = 0.6;
-        console.log("⚡ Speed increased!");
-      }
+        pipes.push({
+            x: canvas.width,
+            topPipeHeight: gapYPosition,
+            bottomPipeY: gapYPosition + gap,
+            passed: false
+        });
+        pipeGenerationTimer -= PIPE_GEN_INTERVAL_SECONDS;
     }
-  });
-
-  pipes = pipes.filter(pipe => pipe.x + 70 > 0);
 }
+
+// pipes drawing
+function drawPipes() {
+    pipes.forEach(pipe => {
+        const topPipeDrawHeight = pipe.topPipeHeight;
+        ctx.drawImage(
+            pipeTopImg,
+            0,
+            pipeTopImg.naturalHeight - topPipeDrawHeight,
+            pipeTopImg.naturalWidth,
+            topPipeDrawHeight,
+            pipe.x,
+            0,
+            70,
+            topPipeDrawHeight
+        );
+
+        const bottomPipeDrawHeight = ground.y - pipe.bottomPipeY;
+        ctx.drawImage(
+            pipeBottomImg,
+            0,
+            0,
+            pipeBottomImg.naturalWidth,
+            bottomPipeDrawHeight,
+            pipe.x,
+            pipe.bottomPipeY,
+            70,
+            bottomPipeDrawHeight
+        );
+    });
+}
+
+//  pipes and scoring update
+function updatePipes(deltaTime) {
+    pipes.forEach(pipe => {
+        pipe.x -= pipeSpeed * deltaTime;
+
+        if (!pipe.passed && pipe.x + 70 < mia.x) {
+            score++;
+            pipe.passed = true;
+
+            if (score === 25) {
+                pipeSpeed = 200;
+                mia.gravity = 1200;
+                console.log("⚡ Speed increased!");
+            }
+        }
+    });
+
+    pipes = pipes.filter(pipe => pipe.x + 70 > 0);
+}
+
+// ground drawing
+function drawGround() {
+    for (let i = 0; ground.x + i * ground.width < canvas.width + ground.width; i++) {
+        ctx.drawImage(groundImg, ground.x + i * ground.width, ground.y, ground.width, ground.height);
+    }
+}
+
+function updateGround(deltaTime) {
+    ground.x -= ground.speed * deltaTime;
+    if (ground.x <= -ground.width) {
+        ground.x = 0;
+    }
+}
+
 // collision detection
 function checkCollision() {
     const pipeWidth = 70;
@@ -129,29 +198,29 @@ function checkCollision() {
     };
 
     pipes.forEach(pipe => {
-        
+
         const topPipe = {
             x: pipe.x + 6,
-            y: pipe.topY + 6,
-            width: pipeWidth - 12,
-            height: pipeHeight - 12
-        };
-    
-        const bottomPipe = {
-            x: pipe.x + 6,
-            y: pipe.bottomY + 6,
-            width: pipeWidth - 12,
-            height: pipeHeight - 12
+            y: 0,
+            width: 70,
+            height: pipe.topPipeHeight
         };
 
-       
+        const bottomPipe = {
+            x: pipe.x + 6,
+            y: pipe.bottomPipeY + 6,
+            width: 70,
+            height: ground.y - pipe.bottomPipeY
+        };
+
+
         const collideTop =
             hitbox.x < topPipe.x + topPipe.width &&
             hitbox.x + hitbox.width > topPipe.x &&
             hitbox.y < topPipe.y + topPipe.height &&
             hitbox.y + hitbox.height > topPipe.y;
 
-        
+
         const collideBottom =
             hitbox.x < bottomPipe.x + bottomPipe.width &&
             hitbox.x + hitbox.width > bottomPipe.x &&
@@ -159,39 +228,62 @@ function checkCollision() {
             hitbox.y + hitbox.height > bottomPipe.y;
 
         if (collideTop || collideBottom) {
+            gameRunning = false;
             alert("💥 Game Over!\nYour Score: " + score);
-            document.location.reload();
+            resetGame();
         }
     });
 }
 
-// Display score and speed-up message 
-   //to be replaced later with other pages display
+// Display score and speed-up message
 function drawScore() {
-  ctx.fillStyle = "#fff";
-  ctx.font = "30px Arial";
-  ctx.fillText("SCORE: " + score, 20, 50);
+    ctx.fillStyle = "#fff";
+    ctx.font = "30px Arial";
+    ctx.fillText("SCORE: " + score, 20, 50);
 
-  if (score >= 25) {
-    ctx.font = "20px Arial";
-    ctx.fillText("⚡ Speed Up!", 20, 80);
-  }
+    if (score >= 25) {
+        ctx.font = "20px Arial";
+        ctx.fillText("⚡ Speed Up!", 20, 80);
+    }
 }
 
-// Main 
-function animate() {
-  drawBackground();
-  drawPipes();
-  drawMIA();
-  drawScore();
-
-  updateMIA();
-  generatePipes();
-  updatePipes();
-  checkCollision();
-
-  frame++;
-  requestAnimationFrame(animate);
+function resetGame() {
+    mia.x = 248;
+    mia.y = 274;
+    mia.velocity = 0;
+    pipes = [];
+    frame = 0;
+    score = 0;
+    pipeSpeed = 150;
+    mia.gravity = 1000;
+    ground.x = 0;
+    pipeGenerationTimer = 0;
+    gameRunning = true;
 }
 
-animate();
+let lastTime = 0;
+
+// Main
+function animate(currentTime) {
+    const deltaTime = (currentTime - lastTime) / 1000;
+    lastTime = currentTime;
+
+    drawBackground();
+    drawGround();
+    drawPipes();
+    drawMIA();
+    drawScore();
+
+    if (gameRunning) {
+        updateGround(deltaTime);
+        updateMIA(deltaTime);
+        generatePipes(deltaTime);
+        updatePipes(deltaTime);
+        checkCollision();
+        frame++;
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate(0);
