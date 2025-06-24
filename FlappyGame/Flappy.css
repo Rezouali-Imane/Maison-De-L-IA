@@ -6,6 +6,11 @@ body{
     margin: 0;
 
 }
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
 .sound-button{
     background: none;
     border: none;
@@ -168,3 +173,16 @@ body{
 
 
 
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
