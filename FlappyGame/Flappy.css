@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Silkscreen:wght@400;700&display=swap');
+body{
+    background: #003566;
+
+    flex-shrink: 0;
+    margin: 0;
+
+}
+.sound-button{
+    background: none;
+    border: none;
+    width: 81px;
+    height: 64px;
+    transform: scale(0.6);
+    transform-origin: top left;
+    flex-shrink: 0;
+    aspect-ratio: 81/64;
+    background-image: url(images/soundON.png);
+    margin: 10px;
+}
+.cloud1{
+    width: 415px;
+    height: 136px;
+    flex-shrink: 0;
+    aspect-ratio: 144/35;
+    background-image: url(images/cloud1.png);
+    transform-origin: top right;
+    background-repeat: no-repeat;
+    position: absolute;
+    top:200px;
+    left:989px;
+    transform: scale(0.7);
+    transform-origin: top left;
+    
+
+}
+.cloud2 {
+    width: 370px;
+    height: 140px;
+    flex-shrink: 0;
+    aspect-ratio: 144/35;
+    background-image: url(images/cloud2.png);
+    transform-origin: top right;
+    position: absolute;
+    top: 90px;
+    right: 965px;
+    transform: scale(0.7);
+    transform-origin: top ;
+}
+.cloud3{
+    width: 390.657px;
+    height: 95px;
+    flex-shrink: 0;
+    aspect-ratio: 419.66/102.00;
+    background-image: url(images/cloud3.png);
+    transform-origin: top right;
+    position: absolute;
+    top: 60px;
+    left: 750px;
+    right: 124.34px;
+    transform: scale(0.7);
+    transform-origin: top left;
+}
+.lets-play-me{
+    color: #FDD182;
+    text-align: center;
+    font-family: Silkscreen;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    right:400px;
+    top: 140px;
+    position: absolute;
+} 
+.mia-text{
+    width: 500px;
+    height: 248px;
+    flex-shrink: 0;
+    aspect-ratio: 125/62;
+    background-image: url(images/MIA.png);
+    transform: scale(0.65);
+    transform-origin: top right;
+    position: absolute;
+    top: 200px;
+    left: 290px;
+}
+.flappy-game-text{
+    color: #FDD182;
+    text-align: center;
+    font-family: Silkscreen;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top: 330px;
+    right:420px;
+    position: absolute;
+}
+.button-start{
+    background: none;
+    border: none;
+    width: 247px;
+    height: 106px;
+    flex-shrink: 0;
+    aspect-ratio: 247/106;
+    background-image: url(images/start-btn.png);
+    transform: scale(0.5);
+    transform-origin: top ;
+    position: absolute;
+    top: 400px;
+    left: 505px;
+}
+.flying-mia{
+    width: 230.18px;
+    height: 235.604px;
+    transform: rotate(27.575deg);
+    flex-shrink: 0;
+    background-image: url(images/FlyingMia.png);
+    transform: scale(0.65);
+    transform-origin: top ;
+    position: absolute;
+    top: 300px;
+    left: 820px;
+}
+.tree{
+    width: 313px;
+    height: 432px;
+    flex-shrink: 0;
+    aspect-ratio: 413/437;
+    background-image: url(images/tree.png);
+    top: 170px;
+    position: absolute;
+    transform: scale(0.6);
+    transform-origin: left;
+    
+}
+.L7IT{
+    background-image: url(images/ground1.png);
+    width: 2840.657px;
+    height: 150px;
+    transform: scale(0.45);
+    transform-origin: top left;
+    flex-shrink: 0;
+    aspect-ratio: 305/58;
+    position: absolute;
+    top: 515px;
+}
+
+
+/* Écrans jusqu'à 1024px (tablette) */
+@media screen and (max-width: 102px) {
+    .lets-play-me, .flappy-game-text {
+        font-size: 36px;
+        right: 200px;
+    }
+
+    .mia-text, .flying-mia, .cloud1, .cloud2, .cloud3, .tree {
+        transform: scale(0.5);
+    }
+
+    .button-start {
+        left: 300px;
+        top: 450px;
+    }
+}
+
+
+
+

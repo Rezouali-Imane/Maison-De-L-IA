@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Silkscreen:wght@400;700&display=swap');
+body{
+    background: #003566;
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    margin: 0;
+
+}
+.sound-button{
+    background: none;
+    border: none;
+    width: 81px;
+    height: 64px;
+    transform: scale(0.6);
+    transform-origin: top left;
+    flex-shrink: 0;
+    aspect-ratio: 81/64;
+    background-image: url(images/soundON.png);
+    margin: 10px;
+}
+.cloud1{
+    width: 415px;
+    height: 140px;
+    flex-shrink: 0;
+    aspect-ratio: 144/35;
+    background-image: url(images/cloud1.png);
+    position: absolute;
+    top:200px;
+    left:989px;
+    transform: scale(0.7);
+    transform-origin: top left;
+
+}
+.cloud2 {
+   width: 422.657px;
+    height: 95px;
+    flex-shrink: 0;
+    aspect-ratio: 144/35;
+    background-image: url(images/cloud3.png);
+    position: absolute;
+    top: 90px;
+    transform: scale(1,1);
+    transform-origin: top ;
+}
+.cloud3{
+    width: 422.657px;
+    height: 95px;
+    flex-shrink: 0;
+    aspect-ratio: 419.66/102.00;
+    background-image: url(images/cloud3.png);
+    position: absolute;
+    top: 60px;
+    left: 750px;
+    right: 124.34px;
+    transform: scale(0.7);
+    transform-origin: top left;
+}
+.cloud4{
+    width: 422.657px;
+    height: 95px;
+    flex-shrink: 0;
+    aspect-ratio: 419.66/102.00;
+    background-image: url(images/cloud3.png);
+    position: absolute;
+    top: 300px;
+    left: 450px;
+    right: 124.34px;
+    transform: scale(1);
+    transform-origin: top ;
+}
+.press-start{
+    color: #FFF;
+    text-align: center;
+    font-family: Silkscreen;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.box{
+    display: flex;
+    width: 660px;
+    height: 386px;
+    padding: 5.563px 26.796px;
+    justify-content: center;
+    align-items: center;
+    gap: 5.563px;
+    flex-shrink: 0;
+    border: 20px solid rgba(253, 202, 112, 0.40);
+    background: rgba(0, 53, 102, 0.30);
+    box-shadow: -8.008px 8.008px 0px 0px rgba(4, 34, 98, 0.40);
+    backdrop-filter: blur(3.943507194519043px);
+}
+.mia-thinking{
+    width: 238px;
+    height: 237px;
+    flex-shrink: 0;
+    aspect-ratio: 238/237;
+    background-image: url(images/MIAthinking.png);
+    position: absolute;
+    transform: scale(0.6);
+    transform-origin: bottom ;
+    top: 285px;
+    right: 180px;
+
+}
+.L7IT{
+    background-image: url(images/ground1.png);
+    width: 2840.657px;
+    height: 150px;
+    transform: scale(0.45);
+    transform-origin: top left;
+    flex-shrink: 0;
+    aspect-ratio: 305/58;
+    position: absolute;
+    top: 515px;
+}
