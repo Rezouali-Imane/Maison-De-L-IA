@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Silkscreen:wght@400;700&display=swap');
-body{
+
+body {
     background: #003566;
     width: 100vw;
     height: 100vh;
@@ -7,7 +8,8 @@ body{
     margin: 0;
 
 }
-.sound-button{
+
+.sound-button {
     background: none;
     border: none;
     width: 81px;
@@ -19,31 +21,34 @@ body{
     background-image: url(images/soundON.png);
     margin: 10px;
 }
-.cloud1{
+
+.cloud1 {
     width: 415px;
     height: 140px;
     flex-shrink: 0;
     aspect-ratio: 144/35;
     background-image: url(images/cloud1.png);
     position: absolute;
-    top:200px;
-    left:989px;
+    top: 200px;
+    left: 989px;
     transform: scale(0.7);
     transform-origin: top left;
 
 }
+
 .cloud2 {
-   width: 422.657px;
+    width: 422.657px;
     height: 95px;
     flex-shrink: 0;
     aspect-ratio: 144/35;
     background-image: url(images/cloud3.png);
     position: absolute;
     top: 90px;
-    transform: scale(1,1);
-    transform-origin: top ;
+    transform: scale(1, 1);
+    transform-origin: top;
 }
-.cloud3{
+
+.cloud3 {
     width: 422.657px;
     height: 95px;
     flex-shrink: 0;
@@ -56,8 +61,9 @@ body{
     transform: scale(0.7);
     transform-origin: top left;
 }
-.cloud4{
-    width: 422.657px;
+
+.cloud4 {
+    width: 423px;
     height: 95px;
     flex-shrink: 0;
     aspect-ratio: 419.66/102.00;
@@ -67,9 +73,10 @@ body{
     left: 450px;
     right: 124.34px;
     transform: scale(1);
-    transform-origin: top ;
+    transform-origin: top;
 }
-.press-start{
+
+.press-start {
     color: #FFF;
     text-align: center;
     font-family: Silkscreen;
@@ -78,7 +85,8 @@ body{
     font-weight: 700;
     line-height: normal;
 }
-.box{
+
+.box {
     display: flex;
     width: 660px;
     height: 386px;
@@ -92,7 +100,8 @@ body{
     box-shadow: -8.008px 8.008px 0px 0px rgba(4, 34, 98, 0.40);
     backdrop-filter: blur(3.943507194519043px);
 }
-.mia-thinking{
+
+.mia-thinking {
     width: 238px;
     height: 237px;
     flex-shrink: 0;
@@ -100,12 +109,13 @@ body{
     background-image: url(images/MIAthinking.png);
     position: absolute;
     transform: scale(0.6);
-    transform-origin: bottom ;
+    transform-origin: bottom;
     top: 285px;
     right: 180px;
 
 }
-.L7IT{
+
+.L7IT {
     background-image: url(images/ground1.png);
     width: 2840.657px;
     height: 150px;

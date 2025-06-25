@@ -1,3 +1,5 @@
+const startScreen = document.getElementById("startScreen");
+const startButton = document.querySelector(".button-start");
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -17,7 +19,9 @@ pipeBottomImg.src = "images/pipeUp.png";
 const groundImg = new Image();
 groundImg.src = "./images/ground1.png";
 
-let gameRunning = true; // NEW: Flag to control game state
+let gameRunning = false;
+let lastTime = 0;
+let animationFrameId = null;
 
 groundImg.onload = function () {
     ground.width = (groundImg.naturalWidth / groundImg.naturalHeight) * ground.height;
@@ -25,6 +29,19 @@ groundImg.onload = function () {
     ground.x = 0;
     ground.speed = pipeSpeed;
 }
+
+startButton.addEventListener("click", () => {
+    startScreen.classList.add('hidden');
+    canvas.style.display = 'block';
+    resetGame();
+    gameRunning = false;
+    setTimeout(() => {
+        gameRunning = true;
+    }, 50);
+    if(animationFrameId === null){
+        animationFrameId = requestAnimationFrame(animate);
+    }
+});
 // mia
 const mia = {
     x: 248,
@@ -90,8 +107,11 @@ function updateMIA(deltaTime) {
 
     if (mia.y + mia.height - 24 > ground.y) {
         gameRunning = false;
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
         alert("💥 Game Over!\nYour Score: " + score);
-        resetGame();
+        canvas.style.display = 'none';
+        startScreen.classList.remove('hidden');
     }
 
     if (mia.y < 0) {
@@ -229,8 +249,11 @@ function checkCollision() {
 
         if (collideTop || collideBottom) {
             gameRunning = false;
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
             alert("💥 Game Over!\nYour Score: " + score);
-            resetGame();
+            canvas.style.display = 'none';
+            startScreen.classList.remove('hidden');
         }
     });
 }
@@ -258,10 +281,10 @@ function resetGame() {
     mia.gravity = 1000;
     ground.x = 0;
     pipeGenerationTimer = 0;
+    lastTime = 0;
     gameRunning = true;
 }
 
-let lastTime = 0;
 
 // Main
 function animate(currentTime) {
@@ -285,5 +308,3 @@ function animate(currentTime) {
 
     requestAnimationFrame(animate);
 }
-
-animate(0);

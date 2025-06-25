@@ -1,3 +1,26 @@
+# --- General OS & Editor Files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.localized
+
+# IDEs and Editors
+# JetBrains IDEs (IntelliJ IDEA, WebStorm, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+.project/
+.vscode/ # Visual Studio Code
+.history/ # VS Code local history
+*.sublime-project
+*.sublime-workspace
+.metadata/ # Eclipse
+bin/ # Eclipse
+tmp/ # Common temp directory for various IDEs/tools
+
+# --- Node.js / JavaScript Specific (Provided by User) ---
 # Logs
 logs
 *.log
@@ -29,7 +52,7 @@ coverage
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Bower dependency directory (https://bower.io/)
+# Bower dependency directory (https://bowerjs.com/)
 bower_components
 
 # node-waf configuration
@@ -134,3 +157,50 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# --- Other Common Build/Output/Temp Files ---
+*.DS_Store
+*.swp
+*.bak
+*.tmp
+*.log
+*.orig
+*.rej
+*.swo
+*.swn
+.sass-cache/
+.nyc_output/
+.DS_Store
+.project
+.settings/
+.buildpath
+*.bak
+*.orig
+*.swp
+*.swo
+*.un~
+*.rej
+*.mine
+*.base
+*.local
+*.scc
+*.pyc
+*.pyo
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.dmg
+*.iso
+*.iml
+*.idea/
+.vscode/
+npm-debug.log
+yarn-error.log
+.env
+.DS_Store
