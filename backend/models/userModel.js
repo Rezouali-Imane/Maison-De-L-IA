@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-       validate: {
+        validate: {
             validator: function(v) {
                return /@(se\.)?univ-bejaia\.dz$/.test(v);
             },
@@ -28,10 +28,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    resetPasswordtoken : string,
+   resetPasswordtoken: String ,
     resetPasswordExpiresAt : Date,
-    verificationToken: string,
+    verificationToken: String,
     verificationTokenExpiresAt: Date
-
+    
 }, { timestamps: true });
-export const User = mongoose.model("User", userSchema);
+export const user = mongoose.model("user", userSchema);
