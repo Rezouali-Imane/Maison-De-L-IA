@@ -127,7 +127,7 @@
     "dev": "nodemon backend/index.js"
   },
   "keywords": [],
-  "type":"module",
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
