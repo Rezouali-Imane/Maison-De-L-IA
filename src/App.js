@@ -1,5 +1,5 @@
 import React from "react";
-import BadgeSection from "./BadgeSection";
+import BadgeSection from "./components/BadgeSection/BadgeSection";
 
 function App() {
   return (
