@@ -9,8 +9,8 @@ const badges = [
   { id: 6, name: "Badge 6", unlocked: false, icon: "/badges/badge6.png" },
   { id: 7, name: "Badge 7", unlocked: false, icon: "/badges/badge7.png" },
   { id: 8, name: "Badge 8", unlocked: false, icon: "/badges/badge8.png" },
-  { id: 9, name: "Badge 9", unlocked: false, icon: "/badges/badge8.png" },
-  { id: 10, name: "Badge 10", unlocked: false, icon: "/badges/badge8.png" },
+  { id: 9, name: "Badge 9", unlocked: false, icon: "/badges/badge9.png" },
+  { id: 10, name: "Badge 10", unlocked: false, icon: "/badges/badge10.png" },
 ];
 
 const BadgeSection = ({ maxWidth = "600px" }) => {
