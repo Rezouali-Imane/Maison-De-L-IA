@@ -1,21 +1,27 @@
-MIT License
+Copyright © 2025 MIA – University of Bejaia  
+All Rights Reserved
 
-Copyright (c) 2025 imane 🌸
+This software and its source code are the exclusive property of the MIA– University of Bejaia.  
+Unauthorized use, reproduction, modification, distribution, or disclosure of this software or any part of it is strictly prohibited.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This codebase is proprietary and confidential. It is intended solely for use by the official development team of the MIA DEV TEAM.  
+Contributors are granted limited access solely for development purposes within the scope of this project.  
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+By accessing or contributing to this project, you agree to the following:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. You **may not** copy, share, or publish any part of the code or documentation.
+2. You **may not** use this software or parts of it for any other project or personal use.
+3. You **must** treat all code and project materials as confidential.
+4. You **must not** grant any third party access without written permission from the project lead or MIA AI Laboratory.
+5. You acknowledge that all intellectual property remains with the MIA AI Laboratory – University of Bejaia.
+
+Violation of any of these terms may result in legal action and permanent removal from the project.
+
+# Contributing Guidelines
+
+All contributors must follow the internal usage rules:
+
+- Do not share this code externally.
+- Do not fork this project outside the organization.
+- All work stays within MIA AI Laboratory’s private scope.
+
