@@ -1,6 +1,9 @@
 import { user } from '../models/userModel.js';
 import bycryptjs from 'bcryptjs';
 import { genTokenAndSetCookie } from '../utils/genTokenAndSetCookie.js';
+import { sendVerificationMail } from '../mailtrap/email.js';
+import { sendWelcomeEmail } from '../mailtrap/email.js';
+import { welcomeEmailTemplate } from "../mailtrap/mailTemp.js";
 
 //!signup endpoint
 
@@ -30,6 +33,10 @@ export const signup = async (req, res) => {
 
    //*token gen + cookie setting
    genTokenAndSetCookie(newUser, res);
+
+   //*verification email
+   await sendVerificationMail(newUser.email, verificationToken); 
+
    res.status(201).json({
     success: true,
     message: 'user creation successful',
@@ -41,6 +48,37 @@ export const signup = async (req, res) => {
   } catch (error) {
     res.status(400).json({success: false, message: error.message});
   }
+};
+
+//!email verification endpoint
+export const emailVerification = async (req, res) => {
+   const { code } = req.body;
+   try {
+      const foundUser = await user.findOne({
+         verificationToken: code,
+         verificationTokenExpiresAt: { $gt: Date.now() }
+      });
+      if (!foundUser) {
+         return res.status(400).json({ success: false, message: "Invalid/expired verification code" });
+      }
+      foundUser.isverified = true;
+      foundUser.verificationToken = undefined;
+      foundUser.verificationTokenExpiresAt = undefined;
+      await foundUser.save();
+
+      await sendWelcomeEmail(foundUser.email, foundUser.name);
+      res.status(200).json({
+         success: true,
+         message: "Email verified successfully",
+         user: {
+            ...foundUser._doc,
+            password: undefined,
+         }
+      });
+
+   } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+   }
 };
 
 

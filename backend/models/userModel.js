@@ -9,13 +9,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        validate: {
-            validator: function(v) {
+        //!I commented this out because it was causing issues with the email validation, since am testing 
+        //! we will wait to get access to the uni domain to uncomment it
+        /* validate: {
+           validator: function(v) {
                return /@(se\.)?univ-bejaia\.dz$/.test(v);
             },
             message: props => `${props.value} you must be a student at the University of Bejaia!`
-        }
+        }*/
     },
+
     password: {
         type: String,
         required: true,
