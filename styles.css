@@ -140,21 +140,12 @@ html, body {
 }
 .course-card {
   background: var(--card-bg);
-  /* Pixel border using box-shadow */
   border-radius: 0;
-  border: 0;
+  border-width: 6px;
+  border-style: solid;
+  /* Neon pixel border using SVG border-image */
+  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path d="M0 0h16v16H0z" fill="none"/><path d="M0 0h4v2H2v2H0V0zm12 0h4v4h-2V2h-2V0zm0 12h2v2h2v4h-4v-2h2v-2zm-12 2h2v2h4v-2H2v-2H0v4z" fill="%23B200FF"/></svg>') 6 repeat;
   position: relative;
-  box-shadow:
-    0 0 0 2px var(--neon-purple),
-    4px 0 0 0 var(--neon-purple),
-    -4px 0 0 0 var(--neon-purple),
-    0 4px 0 0 var(--neon-purple),
-    0 -4px 0 0 var(--neon-purple),
-    4px 4px 0 0 var(--neon-purple),
-    -4px -4px 0 0 var(--neon-purple),
-    4px -4px 0 0 var(--neon-purple),
-    -4px 4px 0 0 var(--neon-purple),
-    0 0 16px #000, 0 0 8px var(--neon-purple);
   min-width: 0;
   min-height: 260px;
   max-width: 100%;
@@ -162,20 +153,82 @@ html, body {
   overflow: visible;
   height: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 28px 22px 22px 22px;
+  box-shadow: 0 0 16px #000, 0 0 8px var(--neon-purple);
+}
+.course-card::before, .course-card::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--neon-blue);
+  z-index: 2;
+}
+.course-card::before {
+  /* Top-left corner */
+  top: 0; left: 0;
+  border-top: 3px solid var(--neon-yellow);
+  border-left: 3px solid var(--neon-yellow);
+  border-radius: 0;
+}
+.course-card::after {
+  /* Top-right corner */
+  top: 0; right: 0;
+  border-top: 3px solid var(--neon-yellow);
+  border-right: 3px solid var(--neon-yellow);
+  border-radius: 0;
+}
+.course-card .pixel-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--neon-blue);
+  z-index: 2;
+}
+.course-card .pixel-corner.bl {
+  /* Bottom-left corner */
+  left: 0; bottom: 0;
+  border-bottom: 3px solid var(--neon-yellow);
+  border-left: 3px solid var(--neon-yellow);
+  border-radius: 0;
+}
+.course-card .pixel-corner.br {
+  /* Bottom-right corner */
+  right: 0; bottom: 0;
+  border-bottom: 3px solid var(--neon-yellow);
+  border-right: 3px solid var(--neon-yellow);
+  border-radius: 0;
+}
+@keyframes pixelBounce {
+  0% { transform: translateY(0); box-shadow: 0 0 16px #000, 0 0 8px var(--neon-purple); background: var(--card-bg); }
+  20% { transform: translateY(-12px); box-shadow: 0 0 32px var(--neon-yellow), 0 0 24px var(--neon-blue), 0 0 0 2px var(--neon-yellow); background: #181860; }
+  40% { transform: translateY(-4px); box-shadow: 0 0 24px var(--neon-yellow), 0 0 16px var(--neon-purple), 0 0 0 2px var(--neon-blue); background: #181880; }
+  60% { transform: translateY(-8px); box-shadow: 0 0 32px var(--neon-yellow), 0 0 24px var(--neon-blue), 0 0 0 2px var(--neon-yellow); background: #181860; }
+  80% { transform: translateY(-2px); box-shadow: 0 0 16px var(--neon-yellow), 0 0 8px var(--neon-purple), 0 0 0 2px var(--neon-blue); background: var(--card-bg); }
+  100% { transform: translateY(0); box-shadow: 0 0 16px #000, 0 0 8px var(--neon-purple); background: var(--card-bg); }
+}
+@keyframes purpleShadowPulse {
+  0% { box-shadow: 0 0 16px #000, 0 0 8px var(--neon-purple); }
+  20% { box-shadow: 0 8px 32px 0 var(--neon-purple), 0 0 24px 0 var(--neon-purple); }
+  50% { box-shadow: 0 0 48px 8px var(--neon-purple), 0 0 32px 0 var(--neon-purple); }
+  80% { box-shadow: 0 -8px 32px 0 var(--neon-purple), 0 0 24px 0 var(--neon-purple); }
+  100% { box-shadow: 0 0 16px #000, 0 0 8px var(--neon-purple); }
+}
+@keyframes cardWobble {
+  0% { transform: none; }
+  15% { transform: rotate(-4deg) scale(1.03); }
+  35% { transform: rotate(3deg) scale(1.04); }
+  55% { transform: rotate(-2deg) scale(1.03); }
+  75% { transform: rotate(2deg) scale(1.02); }
+  100% { transform: none; }
 }
 .course-card:hover {
-  box-shadow:
-    0 0 0 2px var(--neon-yellow),
-    4px 0 0 0 var(--neon-yellow),
-    -4px 0 0 0 var(--neon-yellow),
-    0 4px 0 0 var(--neon-yellow),
-    0 -4px 0 0 var(--neon-yellow),
-    4px 4px 0 0 var(--neon-yellow),
-    -4px -4px 0 0 var(--neon-yellow),
-    4px -4px 0 0 var(--neon-yellow),
-    -4px 4px 0 0 var(--neon-yellow),
-    0 0 32px var(--neon-yellow), 0 0 16px var(--neon-purple);
-  transform: translateY(-10px) scale(1.03) rotate(-1deg);
+  animation: purpleShadowPulse 0.5s cubic-bezier(0.4,2,0.6,1), cardWobble 0.5s cubic-bezier(0.4,2,0.6,1);
+  will-change: transform, box-shadow;
 }
 .course-card.hide {
   visibility: hidden;
@@ -207,9 +260,12 @@ html, body {
 }
 .course-info {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
   font-size: 0.85rem;
   color: #b0b0ff;
+  margin-bottom: 0;
 }
 .progress-bar {
   background: #222244;
@@ -291,37 +347,42 @@ html, body {
   100% { transform: translateX(-50%) scale(1.08); }
 }
 
-/* --- Course Level Label --- */
+/* --- Course Level Label as Small Subtle Pixel Button --- */
 .course-label {
   display: inline-block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.7rem;
-  padding: 4px 12px 4px 12px;
-  margin-bottom: 8px;
-  margin-right: 8px;
-  background: var(--neon-blue);
-  color: #181840;
+  font-size: 0.52rem;
+  padding: 1px 6px 1px 6px;
+  margin: 0 0 0 4px;
+  background: #181840;
+  color: #b0b0ff;
   box-shadow:
-    0 0 0 2px var(--neon-yellow),
-    4px 0 0 0 var(--neon-yellow),
-    -4px 0 0 0 var(--neon-yellow),
-    0 4px 0 0 var(--neon-yellow),
-    0 -4px 0 0 var(--neon-yellow);
+    0 0 0 1.5px #222244,
+    2.5px 0 0 0 #222244,
+    -2.5px 0 0 0 #222244,
+    0 2.5px 0 0 #222244,
+    0 -2.5px 0 0 #222244;
   border-radius: 0;
-  letter-spacing: 1px;
-  text-shadow: 0 0 4px var(--neon-yellow);
+  letter-spacing: 0.5px;
+  text-shadow: none;
+  vertical-align: middle;
+  line-height: 1.1;
+  min-width: 38px;
+  text-align: center;
+  opacity: 0.85;
+  transition: background 0.2s, color 0.2s;
 }
 .course-label.beginner {
-  background: var(--neon-blue);
-  color: #181840;
+  background: #1a2a3a;
+  color: #00ffff;
 }
 .course-label.intermediate {
-  background: var(--neon-yellow);
-  color: #181840;
+  background: #23234a;
+  color: #f7ff00;
 }
 .course-label.advanced {
-  background: var(--neon-purple);
-  color: #fff;
+  background: #2a1a3a;
+  color: #b200ff;
 }
 
 /* Reviews Carousel */
