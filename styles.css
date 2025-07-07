@@ -4,11 +4,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-  --bg-dark: #0A0A23;
+  --bg-dark: #0A0F2C;
+  --bg-card: #10162E;
+  --bg-footer: #080C22;
+  --text-main: #FFFFFF;
+  --text-light: #4d78c1;
+  --text-yellow: #FFE600;
+  --text-label: #a9d4da;
+  --progress-track:#18176b;
+  --progress-fill: #2778ea;
+  --btn-blue: #008CBA;
+  --btn-purple: #B465F5;
+  --filter-border: hsla(62, 94%, 48%, 0.918);
+  --filter-border-alt: #3330c3;
+  --star-yellow: #bc4d1e;
+  --footer-link: #D0D0E0;
   --neon-yellow: #F7FF00;
   --neon-blue: #00FFFF;
   --neon-purple: #B200FF;
-  --text-main: #fff;
   --card-bg: #181840;
   --border-radius: 10px;
   --transition: 0.3s cubic-bezier(0.4,2,0.6,1);
@@ -19,12 +32,13 @@ html, body {
   padding: 0;
   background: var(--bg-dark);
   color: var(--text-main);
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 14px;
   min-height: 100vh;
 }
 
 .pixel-heading, .section-title, h4, .logo-pixel {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P', 'VT323', monospace;
   letter-spacing: 2px;
   color: var(--neon-yellow);
   text-shadow: 0 0 8px var(--neon-yellow), 0 0 2px var(--neon-blue);
@@ -34,9 +48,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #11112a;
+  background: #0A0F2C;
   padding: 18px 32px;
-  border-bottom: 2px solid var(--neon-purple);
+  border-bottom: 2px solid #22264C;
 }
 .nav-menu {
   display: flex;
@@ -46,32 +60,34 @@ html, body {
   padding: 0;
 }
 .nav-menu a {
-  color: var(--neon-blue);
+  color: var(--text-main);
   text-decoration: none;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.9rem;
-  transition: color var(--transition);
+  font-family: inherit;
+  font-size: 15px;
+  transition: color 0.2s;
 }
 .nav-menu a:hover {
-  color: var(--neon-yellow);
-  text-shadow: 0 0 8px var(--neon-yellow);
+  color: var(--text-yellow);
 }
 .signup-btn {
-  background: var(--neon-purple);
+  background: linear-gradient(90deg, #185fed 0%, #eff221 100%);
   color: #fff;
+  font-family: inherit;
+  font-size: 15px;
   border: none;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 1rem;
+  border-radius: 8px;
   padding: 10px 24px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 0 12px var(--neon-purple);
+  box-shadow: 0 0 8px #272e7e;
   cursor: pointer;
-  transition: background var(--transition), box-shadow var(--transition);
+  border: 2.5px solid #190e4f;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .signup-btn:hover {
-  background: var(--neon-yellow);
-  color: #181840;
-  box-shadow: 0 0 24px var(--neon-yellow);
+  background: #CB6CE6;
+  color: #0A0F2C;
+  box-shadow: 0 0 16px #CB6CE6;
 }
 
 .hero {
@@ -79,27 +95,32 @@ html, body {
   align-items: center;
   gap: 32px;
   padding: 48px 5vw 24px 5vw;
-  background: linear-gradient(90deg, #0A0A23 60%, #181840 100%);
+  background: none;
 }
-.hero-img {
-  width: 160px;
-  height: 160px;
-  image-rendering: pixelated;
-  border: 4px solid var(--neon-blue);
-  border-radius: 16px;
-  background: #222244;
-  box-shadow: 0 0 24px var(--neon-blue);
+.hero-image {
+  position: absolute;
+  top: 10px; /* adjust */
+  left: 10px; /* adjust */
+  z-index: 1; /* place behind or in front */
+  background: transparent;
+  mix-blend-mode: screen; /* or multiply/overlay for blending effect */
 }
+
 .hero-content {
   flex: 1;
 }
-.highlight {
-  color: var(--neon-yellow);
-  text-shadow: 0 0 8px var(--neon-yellow);
+.pixel-heading {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+#pixel-heading .highlight {
+  #color: var(--text-yellow);
+  #font-size: 25px;
+  #text-shadow: 0 0 8px var(--text-yellow);
 }
 .hero-desc {
-  color: #b0b0ff;
-  font-size: 1rem;
+  color: var(--text-light);
+  font-size: 14px;
   margin-top: 18px;
   max-width: 500px;
 }
@@ -114,21 +135,22 @@ html, body {
   margin-top: 12px;
 }
 .filter-btn {
-  background: none;
-  border: 2px solid var(--neon-blue);
-  color: var(--neon-blue);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
-  padding: 8px 18px;
-  border-radius: 8px;
+  background: #121D3B;
+  border: 2px solid var(--filter-border);
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
+  padding: 7px 18px;
+  border-radius: 16px 16px 12px 12px / 8px 8px 12px 12px;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: 0 0 8px var(--filter-border-alt);
 }
 .filter-btn.active, .filter-btn:hover {
-  background: var(--neon-blue);
-  color: #181840;
-  border-color: var(--neon-yellow);
-  box-shadow: 0 0 12px var(--neon-blue);
+  background: var(--filter-border);
+  color: #10162E;
+  border-color: var(--text-yellow);
+  box-shadow: 0 0 12px var(--filter-border);
 }
 
 .courses-grid {
@@ -139,12 +161,9 @@ html, body {
   padding: 32px 5vw;
 }
 .course-card {
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: 0;
-  border-width: 6px;
-  border-style: solid;
-  /* Neon pixel border using SVG border-image */
-  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path d="M0 0h16v16H0z" fill="none"/><path d="M0 0h4v2H2v2H0V0zm12 0h4v4h-2V2h-2V0zm0 12h2v2h2v4h-4v-2h2v-2zm-12 2h2v2h4v-2H2v-2H0v4z" fill="%23B200FF"/></svg>') 6 repeat;
+  border: none;
   position: relative;
   min-width: 0;
   min-height: 260px;
@@ -158,7 +177,7 @@ html, body {
   justify-content: space-between;
   gap: 12px;
   padding: 28px 22px 22px 22px;
-  box-shadow: 0 0 16px #000, 0 0 8px var(--neon-purple);
+  box-shadow: 0 0 24px 0 #00F0FF22, 0 0 8px #10162E;
 }
 .course-card::before, .course-card::after {
   content: '';
@@ -239,37 +258,37 @@ html, body {
   min-height: 260px;
 }
 .course-header h3 {
-  font-family: 'Press Start 2P', monospace;
-  color: var(--neon-yellow);
-  font-size: 1.1rem;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  color: #fff;
+  font-size: 16px;
   margin: 0 0 8px 0;
 }
 .course-meta {
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 0.8rem;
-  color: var(--neon-blue);
+  font-size: 12px;
+  color: var(--progress-fill);
 }
 .stars {
-  color: var(--neon-yellow);
-  text-shadow: 0 0 6px var(--neon-yellow);
+  color: var(--star-yellow);
+  text-shadow: 0 0 6px var(--star-yellow);
 }
 .students {
-  color: var(--neon-blue);
+  color: var(--progress-fill);
 }
 .course-info {
   display: flex;
   align-items: center;
   gap: 10px;
   justify-content: space-between;
-  font-size: 0.85rem;
-  color: #b0b0ff;
+  font-size: 13px;
+  color: var(--text-light);
   margin-bottom: 0;
 }
 .progress-bar {
-  background: #222244;
-  border: 2px solid var(--neon-blue);
+  background: var(--progress-track);
+  border: 2px solid var(--progress-fill);
   border-radius: 8px;
   height: 18px;
   width: 100%;
@@ -278,30 +297,30 @@ html, body {
   position: relative;
 }
 .progress-fill {
-  background: linear-gradient(90deg, var(--neon-yellow), var(--neon-blue));
+  background: linear-gradient(90deg, var(--progress-fill), #00F0FF);
   height: 100%;
   width: 0%;
   border-radius: 8px;
-  box-shadow: 0 0 12px var(--neon-yellow);
+  box-shadow: 0 0 12px var(--progress-fill);
   transition: width 1s cubic-bezier(0.4,2,0.6,1);
 }
 .learn-btn {
-  background: var(--neon-blue);
-  color: #181840;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.85rem;
+  background: var(--btn-blue);
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 0;
   margin-top: 8px;
   cursor: pointer;
-  box-shadow: 0 0 8px var(--neon-blue);
-  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  box-shadow: 0 0 8px var(--btn-blue);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .learn-btn:hover {
-  background: var(--neon-yellow);
-  color: #181840;
-  box-shadow: 0 0 16px var(--neon-yellow);
+  background: var(--progress-fill);
+  color: #10162E;
+  box-shadow: 0 0 16px var(--progress-fill);
 }
 
 /* --- Pixel Tooltip Styling --- */
@@ -312,7 +331,7 @@ html, body {
   transform: translateX(-50%) scale(0.8);
   background: #181840;
   color: var(--neon-yellow);
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P', 'VT323', monospace;
   font-size: 0.75rem;
   border-radius: 0;
   border: 0;
@@ -350,27 +369,20 @@ html, body {
 /* --- Course Level Label as Small Subtle Pixel Button --- */
 .course-label {
   display: inline-block;
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P', 'VT323', monospace;
   font-size: 0.52rem;
   padding: 1px 6px 1px 6px;
   margin: 0 0 0 4px;
-  background: #181840;
-  color: #b0b0ff;
-  box-shadow:
-    0 0 0 1.5px #222244,
-    2.5px 0 0 0 #222244,
-    -2.5px 0 0 0 #222244,
-    0 2.5px 0 0 #222244,
-    0 -2.5px 0 0 #222244;
-  border-radius: 0;
+  background: var(--text-label);
+  color: #fff;
+  border-radius: 6px;
   letter-spacing: 0.5px;
-  text-shadow: none;
   vertical-align: middle;
   line-height: 1.1;
   min-width: 38px;
   text-align: center;
-  opacity: 0.85;
-  transition: background 0.2s, color 0.2s;
+  opacity: 0.95;
+  border: 2px solid #fff2;
 }
 .course-label.beginner {
   background: #1a2a3a;
@@ -390,6 +402,11 @@ html, body {
   padding: 48px 5vw 24px 5vw;
   text-align: center;
 }
+.section-title {
+  color: var(--text-yellow);
+  font-size: 20px;
+  margin-bottom: 18px;
+}
 .review-carousel {
   position: relative;
   min-height: 220px;
@@ -403,7 +420,7 @@ html, body {
   justify-content: center;
   background: #181840;
   border-radius: 16px;
-  box-shadow: 0 0 16px var(--neon-blue);
+  box-shadow: 0 0 16px var(--progress-fill);
   padding: 32px 18px 24px 18px;
   position: absolute;
   width: 100%;
@@ -422,20 +439,21 @@ html, body {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  border: 3px solid var(--neon-yellow);
+  border: 3px solid var(--text-yellow);
   margin-bottom: 16px;
   background: #222244;
   image-rendering: pixelated;
 }
 .review-name {
-  color: var(--neon-yellow);
-  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
   margin: 0 0 10px 0;
-  font-size: 1rem;
+  font-size: 15px;
+  font-weight: bold;
 }
 .review-text {
-  color: #b0b0ff;
-  font-size: 0.95rem;
+  color: var(--text-light);
+  font-size: 13px;
   margin: 0;
 }
 .carousel-dots {
@@ -449,13 +467,13 @@ html, body {
   height: 14px;
   border-radius: 50%;
   background: #222244;
-  border: 2px solid var(--neon-blue);
+  border: 2px solid var(--text-yellow);
   cursor: pointer;
-  transition: background var(--transition), border-color var(--transition);
+  transition: background 0.2s, border-color 0.2s;
 }
 .dot.active, .dot:hover {
-  background: var(--neon-yellow);
-  border-color: var(--neon-yellow);
+  background: var(--text-yellow);
+  border-color: var(--text-yellow);
 }
 
 /* Feedback Section */
@@ -472,37 +490,37 @@ html, body {
   position: relative;
 }
 .feedback-input {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
   padding: 10px 18px;
-  border: 2px solid var(--neon-blue);
+  border: 2px solid var(--text-yellow);
   border-radius: 8px;
-  background: #181840;
-  color: var(--neon-blue);
+  background: #10162E;
+  color: #fff;
   outline: none;
-  transition: border-color var(--transition);
+  transition: border-color 0.2s;
   width: 320px;
   max-width: 80vw;
 }
 .feedback-input:focus {
-  border-color: var(--neon-yellow);
+  border-color: var(--progress-fill);
 }
 .send-btn {
-  background: var(--neon-purple);
-  color: #fff;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
-  border: none;
+  background: transparent;
+  color: var(--text-yellow);
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
+  border: 2px solid var(--text-yellow);
   border-radius: 8px;
   padding: 10px 22px;
   cursor: pointer;
-  box-shadow: 0 0 8px var(--neon-purple);
-  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .send-btn:hover {
-  background: var(--neon-yellow);
-  color: #181840;
-  box-shadow: 0 0 16px var(--neon-yellow);
+  background: var(--text-yellow);
+  color: #10162E;
+  box-shadow: 0 0 8px var(--text-yellow);
 }
 .feedback-confirmation {
   display: none;
@@ -510,13 +528,13 @@ html, body {
   left: 50%;
   top: 120%;
   transform: translateX(-50%);
-  background: var(--neon-blue);
-  color: #181840;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
+  background: var(--progress-fill);
+  color: #10162E;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
   padding: 10px 24px;
   border-radius: 8px;
-  box-shadow: 0 0 16px var(--neon-blue);
+  box-shadow: 0 0 16px var(--progress-fill);
   z-index: 10;
   animation: popUp 0.7s cubic-bezier(0.4,2,0.6,1);
 }
@@ -531,11 +549,11 @@ html, body {
 
 /* Footer */
 .footer {
-  background: #11112a;
-  color: #b0b0ff;
+  background: var(--bg-footer);
+  color: var(--text-main);
   padding: 36px 5vw 18px 5vw;
-  font-size: 0.95rem;
-  border-top: 2px solid var(--neon-purple);
+  font-size: 12px;
+  border-top: 2px solid #181840;
 }
 .footer-cols {
   display: flex;
@@ -545,10 +563,10 @@ html, body {
   margin-bottom: 18px;
 }
 .footer-col h4 {
-  color: var(--neon-yellow);
-  font-family: 'Press Start 2P', monospace;
+  color: var(--text-yellow);
+  font-family: 'Press Start 2P', 'VT323', monospace;
   margin-bottom: 12px;
-  font-size: 1rem;
+  font-size: 13px;
 }
 .footer-col ul {
   list-style: none;
@@ -557,7 +575,7 @@ html, body {
 }
 .footer-col li {
   margin-bottom: 8px;
-  color: var(--neon-blue);
+  color: var(--footer-link);
 }
 .footer-bottom {
   display: flex;
@@ -565,7 +583,7 @@ html, body {
   align-items: center;
   border-top: 1px solid #222244;
   padding-top: 12px;
-  font-size: 0.85rem;
+  font-size: 12px;
 }
 .footer-icons {
   display: flex;
@@ -573,8 +591,15 @@ html, body {
 }
 .icon {
   font-size: 1.5rem;
-  color: var(--neon-purple);
-  filter: drop-shadow(0 0 6px var(--neon-purple));
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  padding: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.icon:hover {
+  color: var(--text-yellow);
+  border-color: var(--text-yellow);
 }
 
 /* Responsive Design */
