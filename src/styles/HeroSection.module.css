@@ -1,0 +1,43 @@
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 48px 5vw 24px 5vw;
+  background: none;
+}
+.heroImg {
+  width: 160px;
+  height: 160px;
+  image-rendering: pixelated;
+  border: none;
+  border-radius: none;
+  background: transparent;
+  box-shadow: none;
+}
+.heroContent {
+  flex: 1;
+}
+.pixelHeading {
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.highlight {
+  color: #FFE600;
+  font-size: 32px;
+  text-shadow: 0 0 8px #FFE600;
+}
+.heroDesc {
+  color: #A0B0CC;
+  font-size: 14px;
+  margin-top: 18px;
+  max-width: 500px;
+}
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+  }
+} 

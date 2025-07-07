@@ -1,0 +1,64 @@
+.navbar {
+  background: #0A0F2C;
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 15px;
+  padding: 18px 32px;
+  border-bottom: 2px solid #22264C;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logoPixel {
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 22px;
+  color: #FFE600;
+  text-shadow: 0 0 8px #FFE600, 0 0 2px #00F0FF;
+}
+.navMenu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navMenu a {
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navMenu a:hover {
+  color: #FFE600;
+}
+.signupBtn {
+  background: linear-gradient(90deg, #B465F5 0%, #CB6CE6 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  box-shadow: 0 0 8px #CB6CE6;
+  cursor: pointer;
+  border: 2.5px solid #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.signupBtn:hover {
+  background: #CB6CE6;
+  color: #0A0F2C;
+  box-shadow: 0 0 16px #CB6CE6;
+}
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 8px;
+  }
+  .navMenu {
+    gap: 12px;
+  }
+} 

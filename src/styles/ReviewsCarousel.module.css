@@ -1,0 +1,78 @@
+.reviews {
+  padding: 48px 5vw 24px 5vw;
+  text-align: center;
+}
+.sectionTitle {
+  color: #FFE600;
+  font-size: 20px;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  margin-bottom: 18px;
+}
+.reviewCarousel {
+  position: relative;
+  min-height: 220px;
+  margin: 0 auto 18px auto;
+  max-width: 420px;
+}
+.reviewSlide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #181840;
+  border-radius: 16px;
+  box-shadow: 0 0 16px #00E0FF;
+  padding: 32px 18px 24px 18px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.4,2,0.6,1);
+  z-index: 1;
+}
+.active {
+  display: flex;
+  opacity: 1;
+  z-index: 2;
+}
+.reviewAvatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid #FFE600;
+  margin-bottom: 16px;
+  background: #222244;
+  image-rendering: pixelated;
+}
+.reviewName {
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+.reviewText {
+  color: #A0B0CC;
+  font-size: 13px;
+  margin: 0;
+}
+.carouselDots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #222244;
+  border: 2px solid #FFE600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.dot.active, .dot:hover {
+  background: #FFE600;
+  border-color: #FFE600;
+} 

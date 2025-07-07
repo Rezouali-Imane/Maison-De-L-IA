@@ -1,0 +1,33 @@
+.filters {
+  padding: 24px 5vw 0 5vw;
+}
+.sectionTitle {
+  color: #FFE600;
+  font-size: 20px;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  margin-bottom: 18px;
+}
+.filterBtns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.filterBtn {
+  background: #121D3B;
+  border: 2px solid #00F0FF;
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
+  padding: 7px 18px;
+  border-radius: 16px 16px 12px 12px / 8px 8px 12px 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  box-shadow: 0 0 8px #497FFF;
+}
+.active, .filterBtn:hover {
+  background: #00F0FF;
+  color: #10162E;
+  border-color: #FFE600;
+  box-shadow: 0 0 12px #00F0FF;
+} 

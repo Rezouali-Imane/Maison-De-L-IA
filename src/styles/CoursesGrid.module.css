@@ -1,0 +1,8 @@
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 32px;
+  align-items: stretch;
+  padding: 32px 5vw;
+  background: none;
+} 

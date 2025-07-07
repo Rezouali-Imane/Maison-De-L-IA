@@ -1,0 +1,155 @@
+.courseCard {
+  background: #10162E;
+  border-radius: 0;
+  border: none;
+  position: relative;
+  min-width: 0;
+  min-height: 260px;
+  max-width: 400px;
+  transition: box-shadow 0.3s cubic-bezier(0.4,2,0.6,1), transform 0.25s cubic-bezier(0.4,2,0.6,1);
+  overflow: visible;
+  height: 250px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 28px 22px 22px 22px;
+  box-shadow: 0 0 24px 0 #00F0FF22, 0 0 8px #10162E;
+  cursor: pointer;
+}
+.courseHeader h3 {
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  color: #fff;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+}
+.courseMeta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+  color: #00E0FF;
+}
+.stars {
+  color: #FFE600;
+  text-shadow: 0 0 6px #FFE600;
+}
+.students {
+  color: #00E0FF;
+}
+.courseInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #A0B0CC;
+  margin-bottom: 0;
+}
+.courseLabel {
+  display: inline-block;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 0.52rem;
+  padding: 1px 6px 1px 6px;
+  margin: 0 0 0 4px;
+  background: #CB6CE6;
+  color: #fff;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  line-height: 1.1;
+  min-width: 38px;
+  text-align: center;
+  opacity: 0.95;
+  border: 2px solid #fff2;
+}
+.beginner { background: #CB6CE6; color: #fff; }
+.intermediate { background: #FFE600; color: #10162E; }
+.advanced { background: #00E0FF; color: #10162E; }
+.progressBar {
+  background: #2D3B54;
+  border: 2px solid #00E0FF;
+  border-radius: 8px;
+  height: 18px;
+  width: 100%;
+  margin: 8px 0 0 0;
+  overflow: hidden;
+  position: relative;
+}
+.progressFill {
+  background: linear-gradient(90deg, #00E0FF, #00F0FF);
+  height: 100%;
+  width: 0%;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #00E0FF;
+  transition: width 1s cubic-bezier(0.4,2,0.6,1);
+}
+.learnBtn {
+  background: #008CBA;
+  color: #fff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #008CBA;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.learnBtn:hover {
+  background: #00E0FF;
+  color: #10162E;
+  box-shadow: 0 0 16px #00E0FF;
+}
+.pixelCorner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #00E0FF;
+  z-index: 2;
+}
+.bl {
+  left: 0; bottom: 0;
+  border-bottom: 3px solid #FFE600;
+  border-left: 3px solid #FFE600;
+  border-radius: 0;
+}
+.br {
+  right: 0; bottom: 0;
+  border-bottom: 3px solid #FFE600;
+  border-right: 3px solid #FFE600;
+  border-radius: 0;
+}
+.courseTooltip {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%) scale(0.8);
+  background: #181840;
+  color: #FFE600;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 0.75rem;
+  border-radius: 0;
+  border: 0;
+  box-shadow: 0 0 0 2px #00E0FF, 0 0 16px #00E0FF;
+  padding: 18px 22px 14px 22px;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transition: opacity 0.35s cubic-bezier(0.4,2,0.6,1), transform 0.35s cubic-bezier(0.4,2,0.6,1);
+  min-width: 220px;
+  max-width: 90vw;
+}
+.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.08);
+  animation: tooltipBounce 0.5s cubic-bezier(0.4,2,0.6,1);
+}
+@keyframes tooltipBounce {
+  0% { transform: translateX(-50%) scale(0.7); }
+  60% { transform: translateX(-50%) scale(1.15); }
+  100% { transform: translateX(-50%) scale(1.08); }
+} 
