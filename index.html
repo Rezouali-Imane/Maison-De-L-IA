@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Courses</title>
+  <!-- Google Fonts: Press Start 2P for pixel headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="logo-pixel">🧠</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Learn</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#">Coding</a></li>
+      <li><a href="#">Events</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="signup-btn">SIGNUP</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <img src="pixel-robot.png" alt="Pixel Robot" class="hero-img">
+    <div class="hero-content">
+      <h1 class="pixel-heading">Explore our <span class="highlight">INTERACTIVE COURSES</span></h1>
+      <p class="hero-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque feugiat turpis eget velit ullamcorper vestibulum. Duis sit amet gravida urna.</p>
+    </div>
+  </header>
+
+  <!-- Filter Buttons -->
+  <section class="filters">
+    <h2 class="section-title">ALL COURSES</h2>
+    <div class="filter-btns">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="web">Web Development</button>
+      <button class="filter-btn" data-filter="data">Data Science</button>
+      <button class="filter-btn" data-filter="tools">Tools</button>
+      <button class="filter-btn" data-filter="ml">ML</button>
+    </div>
+  </section>
+
+  <!-- Courses Grid -->
+  <section class="courses-grid">
+    <!-- Example Course Card -->
+    <div class="course-card" data-tags="web">
+      <div class="course-header">
+        <h3>HTML</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">120 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="65">
+        <div class="progress-fill" style="width: 65%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="web">
+      <div class="course-header">
+        <h3>CSS</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">110 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="web">
+      <div class="course-header">
+        <h3>JAVASCRIPT</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">130 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="data tools">
+      <div class="course-header">
+        <h3>DATA MANIPULATION</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">90 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="python ml">
+      <div class="course-header">
+        <h3>PYTHON</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">150 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="data">
+      <div class="course-header">
+        <h3>PANDAS</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">95 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="tools">
+      <div class="course-header">
+        <h3>GIT</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">105 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="tools">
+      <div class="course-header">
+        <h3>GITHUB</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">100 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+    <div class="course-card" data-tags="tools">
+      <div class="course-header">
+        <h3>DOCKER</h3>
+        <div class="course-meta">
+          <span class="stars">⭐⭐⭐⭐☆</span>
+          <span class="students">98 students</span>
+        </div>
+      </div>
+      <div class="course-info">
+        <span>4 weeks</span>
+        <span>12 modules</span>
+      </div>
+      <div class="progress-bar" data-progress="0">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <button class="learn-btn">▶ KEEP LEARNING</button>
+    </div>
+  </section>
+
+  <!-- Reviews Carousel -->
+  <section class="reviews">
+    <h2 class="section-title">STUDENT'S REVIEWS</h2>
+    <div class="review-carousel">
+      <div class="review-slide active">
+        <img src="avatar1.png" alt="Student Avatar" class="review-avatar">
+        <h4 class="review-name">JOHN DOE</h4>
+        <p class="review-text">Lorem ipsum dolor sit amet, consectetur dipiscing elit. Quisque feugiat. Lorem ipsum dolor sit amet, consectetur dipiscing elit. Quisque feugiat.</p>
+      </div>
+      <div class="review-slide">
+        <img src="avatar2.png" alt="Student Avatar" class="review-avatar">
+        <h4 class="review-name">JANE SMITH</h4>
+        <p class="review-text">Great platform! The retro vibe makes learning fun and engaging. Highly recommend to all coding enthusiasts.</p>
+      </div>
+      <div class="review-slide">
+        <img src="avatar3.png" alt="Student Avatar" class="review-avatar">
+        <h4 class="review-name">ALEX PIXEL</h4>
+        <p class="review-text">The interactive courses and pixel art UI are amazing. Progress tracking is super motivating!</p>
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+    </div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section class="feedback">
+    <h2 class="section-title">FEEDBACK AND SUGGESTIONS</h2>
+    <form class="feedback-form">
+      <input type="text" class="feedback-input" placeholder="Your opinion and suggestions matter" required>
+      <button type="submit" class="send-btn">SEND</button>
+      <span class="feedback-confirmation">Thank you for your feedback!</span>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>LEARNING</h4>
+        <ul>
+          <li>Courses</li>
+          <li>Challenges</li>
+          <li>Games</li>
+          <li>Certifications</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>COMMUNITY</h4>
+        <ul>
+          <li>Events</li>
+          <li>Forum</li>
+          <li>Discord</li>
+          <li>Mentorship</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <ul>
+          <li>Université de Béjaïa</li>
+          <li>06000 Béjaïa, Algérie</li>
+          <li>contact@mosaic-bejaia.dz</li>
+          <li>+213 34 XX XX XX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2023 Mosaic Dev LTA. Terms Privacy Policy</span>
+      <div class="footer-icons">
+        <span class="icon"> EMAIL ICON</span>
+        <span class="icon">DISCORD ICON</span>
+        <span class="icon">FACEBOOK ICON </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+</body>
+</html> 
