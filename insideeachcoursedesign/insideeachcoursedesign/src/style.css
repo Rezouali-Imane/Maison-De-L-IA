@@ -1,0 +1,20 @@
+
+@font-face {
+    font-family: Silkscreen;
+    src: url("../src/assets/font/Silkscreen-Regular.ttf");
+}
+@font-face {
+    font-family: Mulish;
+    src: url("../src/assets/font/Mulish-ExtraLight.ttf");
+}
+@font-face {
+    font-family: boldsilk;
+    src: url("../src/assets/font/Silkscreen-Bold.ttf");
+}
+body{
+    background-color: #020E1E;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
