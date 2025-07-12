@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        //!I commented this out because it was causing issues with the email validation, since am testing 
+        //!I commented this out because it was causing issues with the email validation, since am testing with mailtrap
         //! we will wait to get access to the uni domain to uncomment it
         /* validate: {
            validator: function(v) {
