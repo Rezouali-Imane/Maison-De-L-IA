@@ -4,9 +4,12 @@ module.exports = {
   theme: {
     extend: {
        fontFamily: {
+        mulish: ['Mulish', 'sans-serif'],
       pixel: ['"Press Start 2P"', 'monospace'],
     },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
 };
