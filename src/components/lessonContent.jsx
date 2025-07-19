@@ -1,7 +1,7 @@
 
 import { Play } from 'react-feather';
 
-export function Lesson () {
+export function LessonContent () {
 
     return (
         <div className="flex-1 flex items-center justify-center">

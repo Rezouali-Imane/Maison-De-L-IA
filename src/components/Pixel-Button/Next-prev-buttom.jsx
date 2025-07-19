@@ -116,7 +116,7 @@ export default function NextPrevButton({ children, label }) {
           );
         }
 
-        /* Contenu - même couleur que la surface du bouton */
+        /* Contenu */
         .frame-content-small {
           position: absolute;
           top: 12px;
