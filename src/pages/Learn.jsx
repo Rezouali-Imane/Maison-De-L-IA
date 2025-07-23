@@ -292,7 +292,13 @@ export default function InteractiveCoursesPage() {
             </div>
 
             {/* Courses*/}
-
+           <div className="flex items-center gap-3 mb-6 mt-12 group">
+           <div className="w-3 h-3 bg-sky-400 rounded-full animate-pulse group-hover:scale-125 transition" />
+           <h3 className="text-2xl text-sky-400 tracking-[6px] font-extrabold uppercase group-hover:text-white transition-all duration-300 drop-shadow-[0_0_6px_rgba(56,189,248,0.6)]">
+           Web Development
+           </h3>
+           <div className="flex-1 h-[1px] bg-sky-400 group-hover:bg-white transition-all duration-300" />
+           </div>
            <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 w-max mt-12 md:mt-8 px-4">
 
@@ -303,9 +309,15 @@ export default function InteractiveCoursesPage() {
                     ))}
               </div>
             </div>
-
+            <div className="flex items-center gap-3 mb-6 mt-12 group">
+           <div className="w-3 h-3 bg-sky-400 rounded-full animate-pulse group-hover:scale-125 transition" />
+           <h3 className="text-2xl text-sky-400 tracking-[6px] font-extrabold uppercase group-hover:text-white transition-all duration-300 drop-shadow-[0_0_6px_rgba(56,189,248,0.6)]">
+           DevOPS
+           </h3>
+           <div className="flex-1 h-[1px] bg-sky-400 group-hover:bg-white transition-all duration-300" />
+           </div>
             <div className="overflow-x-auto pb-8 scrollbar-hide">
-              <div className="flex gap-6 w-max mt-12 md:mt-8 px-4 ">
+              <div className="flex gap-6 w-max mt-12 md:mt-8 px-4">
 
                {courses
                       .filter((course) => course.category === "devOps")
@@ -314,7 +326,14 @@ export default function InteractiveCoursesPage() {
                     ))}
               </div>
             </div>
-
+             
+            <div className="flex items-center gap-3 mb-6 mt-12 group">
+           <div className="w-3 h-3 bg-sky-400 rounded-full animate-pulse group-hover:scale-125 transition" />
+           <h3 className="text-2xl text-sky-400 tracking-[6px] font-extrabold uppercase group-hover:text-white transition-all duration-300 drop-shadow-[0_0_6px_rgba(56,189,248,0.6)]">
+           AI
+           </h3>
+           <div className="flex-1 h-[1px] bg-sky-400 group-hover:bg-white transition-all duration-300" />
+           </div> 
             <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 w-max mt-12 md:mt-8 px-4">
 

@@ -11,24 +11,24 @@ const Footer = () => (
               <h3 className="text-[rgba(255,251,44,1)] font-bold text-xs">LEARNING</h3>
               <ul className="space-y-2 text-gray-400 font-mulish">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Courses
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Challenges
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Games
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Certifications
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -37,24 +37,24 @@ const Footer = () => (
               <h3 className="text-[rgba(255,251,44,1)] font-bold text-xs">COMMUNITY</h3>
               <ul className="space-y-2 text-gray-400 font-mulish">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Events
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Forum
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Discord
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button className="hover:text-white transition-colors">
                     Mentorship
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -62,7 +62,7 @@ const Footer = () => (
             <div className="space-y-4">
               <h3 className="text-[rgba(255,251,44,1)] font-bold text-xs">CONTACT</h3>
               <ul className="space-y-2 text-gray-400 font-mulish">
-                <li>University of Blida</li>
+                <li>University of Bejaia</li>
                 <li>06000 Béjaia, Algeria</li>
                 <li>contact@maisonai-bejaia.dz</li>
                 <li>+213 43 XX XX XX</li>
