@@ -17,7 +17,7 @@ export function LessonContent() {
 
   return (
     <div className="flex-1 flex items-center justify-center">
-      <div ref={contentRef} className="w-full max-w-3xl">
+      <div ref={contentRef} className="w-full max-w-2xl ">
         <div className="bg-slate-900 border-4 border-[rgba(63,95,183,1)] rounded-lg overflow-hidden shadow-2xl">
           {/* Title */}
           <div className="border-[rgba(63,95,183,1)] text-white px-6 py-3 font-bold text-lg flex items-center gap-3">

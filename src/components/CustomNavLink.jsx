@@ -6,7 +6,7 @@ export function CustomNavLink({ to, children, className = "" }) {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `font-silkscreen text-sm font-bold transition-colors relative group ${className} ${
+        `font-silkscreen text-xs font-bold transition-colors relative group ${className} ${
           isActive ? "text-[rgba(63,95,183,1)]" : "text-[rgba(255,255,255,0.87)] hover:text-white"
         }`
       }

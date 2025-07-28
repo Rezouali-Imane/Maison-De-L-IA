@@ -6,9 +6,9 @@ import PixelButtonSignup  from '../components/Pixel-Button/Signup-button';
 
 const Navbar = () => (
 
-     <nav className=" h-[80px] shrink-0 relative flex items-center px-6 py-4 bg-[rgba(2,6,23,1)] border-b-2 border-[rgba(51,65,85,1)] ">
+     <nav className="fixed top-0 left-0 w-full z-50  h-[80px] shrink-0 relative flex items-center px-6 py-4 bg-[rgba(2,6,23,1)] border-b-2 border-[rgba(51,65,85,1)] ">
         <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-          <div className="flex items-center space-x-6 pointer-events-auto tracking-[2px]">
+          <div className="flex items-center space-x-14 pointer-events-auto tracking-[3px]">
             <CustomNavLink to="/" active={true}> HOME</CustomNavLink>
             <CustomNavLink to="/blog">BLOG</CustomNavLink>
             <CustomNavLink to="learn" >LEARN</CustomNavLink>
@@ -19,7 +19,7 @@ const Navbar = () => (
         </div>
 
         <div className="ml-auto   mb-[10px] h-full flex items-center space-x-6 z-10">
-             <img src={moon} alt="Chevron"className="w-19 h-19"/>
+             <img src={moon} alt="Chevron"className="w-12 h-12"/>
            <PixelButtonSignup > SIGNUP </PixelButtonSignup>
         </div>
      </nav>

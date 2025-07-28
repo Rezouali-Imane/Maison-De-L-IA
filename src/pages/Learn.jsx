@@ -17,6 +17,7 @@ const courses = [
     level: "Advanced",
     students: 34,
     category: "webDev",
+    progress: 65
   },
   {
     title: "CSS",
@@ -26,6 +27,7 @@ const courses = [
     level: "Advanced",
     students: 243,
     category: "webDev",
+    progress: 40
   },
   {
     title: "JAVASCRIPT",
@@ -35,6 +37,7 @@ const courses = [
     level: "Advanced",
     students: 243,
     category: "webDev",
+    progress: 80
   },
   {
     title: "REACT",
@@ -44,6 +47,7 @@ const courses = [
     level: "Advanced",
     students: 400,
     category: "webDev",
+    progress: 25
   },
   {
     title: "PHP",
@@ -53,6 +57,7 @@ const courses = [
     level: "Advanced",
     students: 34,
     category: "webDev",
+    progress: 90
   },
   {
     title: "KOTLIN",
@@ -62,6 +67,7 @@ const courses = [
     level: "Advanced",
     students: 34,
     category: "webDev",
+    progress: 15
   },
   {
     title: "GIT",
@@ -71,9 +77,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 70
   },
-
-   {
+  {
     title: "GIT HUB",
     rating: 3,
     weeks: 5,
@@ -81,8 +87,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 55
   },
-   {
+  {
     title: "DOCKER",
     rating: 3,
     weeks: 5,
@@ -90,8 +97,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 30
   },
-   {
+  {
     title: "FIGMA",
     rating: 3,
     weeks: 5,
@@ -99,8 +107,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 85
   },
-   {
+  {
     title: "POSTMAN",
     rating: 3,
     weeks: 5,
@@ -108,8 +117,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 10
   },
-   {
+  {
     title: "KATALON",
     rating: 3,
     weeks: 5,
@@ -117,8 +127,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 50
   },
- {
+  {
     title: "ANSIBLE",
     rating: 3,
     weeks: 5,
@@ -126,10 +137,9 @@ const courses = [
     level: "Advanced",
     students: 403,
     category: "devOps",
+    progress: 75
   },
-
-
-   {
+  {
     title: "COMPUTER VISION PROJECTS",
     rating: 3,
     weeks: 5,
@@ -137,8 +147,9 @@ const courses = [
     level: "Advanced",
     students: 203,
     category: "IA",
+    progress: 20
   },
-   {
+  {
     title: "HELLO WORLD",
     rating: 3,
     weeks: 5,
@@ -146,8 +157,9 @@ const courses = [
     level: "Advanced",
     students: 1003,
     category: "IA",
+    progress: 95
   },
-   {
+  {
     title: "DATA PROCESSING",
     rating: 3,
     weeks: 5,
@@ -155,6 +167,7 @@ const courses = [
     level: "Advanced",
     students: 43,
     category: "IA",
+    progress: 60
   },
   {
     title: "COPUTER DATA",
@@ -164,8 +177,9 @@ const courses = [
     level: "Advanced",
     students: 40,
     category: "IA",
+    progress: 35
   },
-   {
+  {
     title: "MACHINE LEARNING",
     rating: 3,
     weeks: 5,
@@ -173,9 +187,9 @@ const courses = [
     level: "Advanced",
     students: 40,
     category: "IA",
-  },
-  
-]
+    progress: 5
+  }
+];
 
 const reviews = [
   {
@@ -236,9 +250,12 @@ export default function InteractiveCoursesPage() {
       {/* Hero Section */}
     
       <section
-        className="relative bg-gradient-to-r from-[#030F1F] via-[#061B31] to-[#030E1D] h-auto md:h-[318px]"
-     
-      >
+  className="relative h-auto md:h-[318px]"
+  style={{
+    background: "linear-gradient(to right, #030E1D, #030F1F, #061B31, #030E1D)",
+    backgroundSize: "100% 100%"
+  }}
+>
         <div className="flex h-full  md:flex-row gap-8 items-start">
           
           <div className="flex-none">
@@ -255,7 +272,7 @@ export default function InteractiveCoursesPage() {
                <h1 className=" text-[rgba(148,163,184,1)] sm:text-xl md:text-2xl tracking-[2px] font-normal text-lg  leading-tight mb-6">
                   Explore our
               </h1>
-              <h1 className="text-4xl text-[rgba(255,251,44,1)] md:text-1xl  sm:text-xl tracking-[8px] sm:tracking-[4px] md:tracking-[6px]  font-extrabold leading-tight mb-10">
+              <h1 className="text-4xl text-[rgba(255,251,44,1)] md:text-4xl  sm:text-4xl tracking-[8px] sm:tracking-[4px] md:tracking-[6px]  font-extrabold leading-tight mb-10">
                 INTERACTIVE COURSES
               </h1>
               <p className="font-sans text-[18px] sm:text-base md:text-[18px] font-medium  leading-[28px] tracking-[1px] font-secondary text-[rgba(115,128,149,1)] pr-32 ">
@@ -272,7 +289,7 @@ export default function InteractiveCoursesPage() {
       <section className="px-16 py-16">
         <div className=" mx-auto">
           <div className="space-y-8">
-            <h2 className="text-2xl md:text-2xl font-medium text-[rgba(255,251,44,1)]  tracking-[6px]">ALL COURSES</h2>
+            <h2 className="text-[20px] md:text-[20px] font-medium text-[rgba(255,251,44,1)]  tracking-[6px]">ALL COURSES</h2>
 
             {/* Filters */}
             <div className="flex flex-wrap gap-3 pb-8">
@@ -292,13 +309,7 @@ export default function InteractiveCoursesPage() {
             </div>
 
             {/* Courses*/}
-           <div className="flex items-center gap-3 mb-6 mt-12 group">
-           <div className="w-3 h-3 bg-sky-400 rounded-full animate-pulse group-hover:scale-125 transition" />
-           <h3 className="text-2xl text-sky-400 tracking-[6px] font-extrabold uppercase group-hover:text-white transition-all duration-300 drop-shadow-[0_0_6px_rgba(56,189,248,0.6)]">
-           Web Development
-           </h3>
-           <div className="flex-1 h-[1px] bg-sky-400 group-hover:bg-white transition-all duration-300" />
-           </div>
+         
            <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 w-max mt-12 md:mt-8 px-4">
 
@@ -309,13 +320,7 @@ export default function InteractiveCoursesPage() {
                     ))}
               </div>
             </div>
-            <div className="flex items-center gap-3 mb-6 mt-12 group">
-           <div className="w-3 h-3 bg-sky-400 rounded-full animate-pulse group-hover:scale-125 transition" />
-           <h3 className="text-2xl text-sky-400 tracking-[6px] font-extrabold uppercase group-hover:text-white transition-all duration-300 drop-shadow-[0_0_6px_rgba(56,189,248,0.6)]">
-           DevOPS
-           </h3>
-           <div className="flex-1 h-[1px] bg-sky-400 group-hover:bg-white transition-all duration-300" />
-           </div>
+          
             <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 w-max mt-12 md:mt-8 px-4">
 
@@ -327,13 +332,7 @@ export default function InteractiveCoursesPage() {
               </div>
             </div>
              
-            <div className="flex items-center gap-3 mb-6 mt-12 group">
-           <div className="w-3 h-3 bg-sky-400 rounded-full animate-pulse group-hover:scale-125 transition" />
-           <h3 className="text-2xl text-sky-400 tracking-[6px] font-extrabold uppercase group-hover:text-white transition-all duration-300 drop-shadow-[0_0_6px_rgba(56,189,248,0.6)]">
-           AI
-           </h3>
-           <div className="flex-1 h-[1px] bg-sky-400 group-hover:bg-white transition-all duration-300" />
-           </div> 
+           
             <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 w-max mt-12 md:mt-8 px-4">
 
@@ -405,7 +404,7 @@ export default function InteractiveCoursesPage() {
                 SEND
               </button>
 
-              <p className="text-[rgba(255,251,44,1)] text-[10px] mt-4 tracking-[2px]">YOUR OPINIONS AND SUGGESTIONS MATTER</p>
+              <p className="text-[rgba(255,251,44,1)] text-[8px] mt-4 tracking-[2px]">YOUR OPINIONS AND SUGGESTIONS MATTER</p>
             </div>
           </div>
         </section>
